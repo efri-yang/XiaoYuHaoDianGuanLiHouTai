@@ -1,0 +1,12 @@
+﻿.idea
+node_modules/
+.git
+FontEndDev/
+FontEndDist/
+node_modules/
+dev/
+APSD/
+dist/
+192168026/
+*.dat
+*.sass-cache
