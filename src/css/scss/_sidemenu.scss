@@ -1,0 +1,117 @@
+.com-side {
+    top: 60px;
+    width: 220px;
+    overflow-x: hidden;
+    background-color: #393D49;
+    color: #fff !important;
+    bottom: 0;
+    z-index: 999;
+    position: fixed;
+}
+
+
+
+.com-side-menu-wrap {
+    width: 240px;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.com-side-menu {
+
+    li {
+        a {
+            position: relative;
+            display: block;
+            height: 45px;
+            line-height: 45px;
+            padding: 0 15px 0 10px;
+            background-color: #4E5465;
+            transition: all 0.2s;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            .layui-icon {
+                color: #fff;
+                color: rgba(255, 255, 255, .7);
+                font-size: 24px;
+                margin-right: 5px;
+                vertical-align: middle;
+                transition: background 0.2s;
+            }
+            .txt {
+                color: #fff;
+                color: rgba(255, 255, 255, .7);
+                font-size: 16px;
+                transition: all 0.2s;
+            }
+            .more {
+                content: '';
+                width: 0;
+                height: 0;
+                border-style: dashed;
+                border-color: transparent;
+                overflow: hidden;
+                cursor: pointer;
+                transition: all .2s;
+                -webkit-transition: all .2s;
+                position: absolute;
+                top: 50%;
+                right: 35px;
+                margin-top: -3px;
+                border-width: 6px;
+                border-top-style: solid;
+                border-top-color: #fff;
+                border-top-color: rgba(255, 255, 255, .7);
+            }
+            &:hover {
+                background-color: #5FB878; // background:#00c1de;
+                .layui-icon {
+                    color: #fff;
+                }
+                .txt {
+                    color: #fff;
+                }
+                .more {
+                    border-top-color: #fff;
+                }
+            }
+        }
+        &.treeview {
+            &.active {
+                .treeview-menu {
+                    max-height: auto;
+                }
+            }
+            .treeview-menu {
+                width: 240px;
+                transition: max-height 0.2s;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                max-height: 0;
+                li {
+
+                    a {
+                        background: none;
+                        color: #fff;
+                        color: rgba(255, 255, 255, .7);
+                        padding-left: 42px;
+                        padding-right: 15px;
+                        font-size: 16px;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        &:hover {
+                            color: #fff;
+                        }
+                    }
+                    &.active {
+                        a {
+                            background: #5FB878;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

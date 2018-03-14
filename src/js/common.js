@@ -4,5 +4,6 @@ layui.config({
 }).extend({ //设定模块别名
   sideMenu: 'sidemenu',
   throttleDebounce:"jquery.ba-throttle-debounce",
-  tab:"tab"
+  tab:"tab",
+  webuploader:"webuploader/webuploader"
 });
