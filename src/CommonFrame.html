@@ -164,42 +164,36 @@
             <div class="layui-elem-quote clearfix">
                 <span class="fl f16">榜单列表</span>
             </div>
-            <div class="layui-tab" lay-filter="demo">
-                <ul class="layui-tab-title">
-                    <li class="layui-this">网站设置</li>
-                    <li>用户管理</li>
-                    <li>权限分配</li>
-                    <li>商品管理</li>
-                    <li>订单管理</li>
+            <div class="layui-tab">
+                <ul class="com-tab-title type-2">
+                    <li class="active"><a  href="#tbd-1" data-toggle="tab">全部</a></li>
+                    <li data-toggle="tab"><a href="#tbd-2" data-toggle="tab">正常</a></li>
+                    <li data-toggle="tab"><a href="#tbd-3" data-toggle="tab">待审核</a></li>
+                    <li data-toggle="tab"><a href="#tbd-4" data-toggle="tab">已删除</a></li>
                 </ul>
-                <div class="layui-tab-content">
-                    <div class="layui-tab-item layui-show">
-                        1. 高度默认自适应，也可以随意固宽。
-                        <br>2. Tab进行了响应式处理，所以无需担心数量多少。
-                    </div>
-                    <div class="layui-tab-item">内容2</div>
-                    <div class="layui-tab-item">内容3</div>
-                    <div class="layui-tab-item">内容4</div>
-                    <div class="layui-tab-item">内容5</div>
-                </div>
+                <div class="com-tab-body active p15" id="tbd-1">全部</div>
+                <div class="com-tab-body p15" id="tbd-2">正常</div>
+                <div class="com-tab-body p15" id="tbd-3">待审核</div>
+                <div class="com-tab-body p15" id="tbd-4">已删除</div>
             </div>
         </div>
     </div>
     <script type="text/javascript">
-    layui.use('element', function() {
-        var element = layui.element;
-        element.on('tab(demo)', function(data){
-            console.dir(data);
-        });
+    layui.use(["tab","sideMenu"]);
 
-        element.on('collapse(demo)', function(data){
-            alert("xxxx")
+    layui.use(["jquery",],function($){
+        
+        $("a[href='#tbd-2']").on("shown.bs.tab",function(){
+             alert("shown.bs.tab")
         })
+        // $("a[href='#tbd-2']").on("show.bs.tab",function(){
+        //     alert("show.bs.tab")
+        // })
     });
-
-    layui.use(['jquery', 'sideMenu'], function($) {
-        $(".com-side-menu").sideMenu();
-    });
+    layui.use('element', function() {
+        var $ = layui.jquery,
+            element = layui.element;
+    })
     </script>
 </body>
 

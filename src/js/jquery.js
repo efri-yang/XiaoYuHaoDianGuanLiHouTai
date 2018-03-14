@@ -10984,5 +10984,5 @@ layui.define(function(exports){
   exports('jquery', jQuery);
 });
 
-	return jQuery;
+return jQuery;
 }));

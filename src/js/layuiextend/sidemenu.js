@@ -50,11 +50,11 @@ layui.define(['jquery','throttleDebounce'],function(exports){ //提示：模块�
                
         })
     });
-  	
-
-
-
   }
+
+  $(function(){
+       $(".com-side-menu").sideMenu();
+  })
   //输出test接口
   exports('sideMenu', $.fn.sideMenu);
 });  
