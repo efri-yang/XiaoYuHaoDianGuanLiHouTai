@@ -1,5 +1,4 @@
-/** layui-v2.2.5 MIT License By https://www.layui.com */
- ;/**
+/**
 
  @Name：layui.table 表格操作
  @Author：贤心
