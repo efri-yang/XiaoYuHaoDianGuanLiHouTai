@@ -2,9 +2,13 @@
 /**
  *************************************全站通用整理
  */
-
+.fwbold{
+    font-weight:bold; 
+}
 .com-btn-green{background-color: #5eb95e;}
-
+.clr009688{
+    color:#009688; 
+}
 /**************主体容器*/
 .com-body {
     position: absolute;
@@ -17,8 +21,12 @@
     overflow: hidden;
     overflow-y: auto;
     box-sizing: border-box;
+    transition:all 0.2s 0.2s; 
 }
 
+.unfold[data-area="combody"]{
+    left: 42px;
+}
 /**************模块——tab选项卡*/
 .com-tab-title {
     position: relative;

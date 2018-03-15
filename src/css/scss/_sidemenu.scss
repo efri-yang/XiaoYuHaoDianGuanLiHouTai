@@ -7,9 +7,44 @@
     bottom: 0;
     z-index: 999;
     position: fixed;
+    transition: all 0.2s 0.2s;
+    &.fold{
+        width:42px;
+        .com-side-unfold{
+           width:42px;
+           i{
+                transform:rotate(90deg);
+                margin-left: -19px;  
+           }
+        } 
+    }
 }
 
-
+.com-side-unfold{
+    text-align:center;
+    height:40px;
+    line-height:40px;
+    width:200px; 
+    padding-right: 20px;
+    background:#42485b;
+    cursor:pointer;
+    position:relative; 
+    transition: all 0.2s 0.2s;
+    i{
+        position:absolute;
+        height:18px;
+        line-height:18px;
+        left:50%;
+        top:50%;
+        margin-top: -9px;
+        margin-left: -9px;  
+        transform-origin:center;  
+        transition: all 0.2s;
+    }
+   &:hover{
+         background:darken(#42485b,5%);
+   } 
+}
 
 .com-side-menu-wrap {
     width: 240px;
@@ -23,9 +58,10 @@
         a {
             position: relative;
             display: block;
-            height: 45px;
-            line-height: 45px;
-            padding: 0 15px 0 10px;
+            height: 40px;
+            line-height: 40px;
+            width:212px; 
+            padding: 0 0 0 8px;
             background-color: #4E5465;
             transition: all 0.2s;
             white-space: nowrap;
@@ -34,14 +70,17 @@
                 color: #fff;
                 color: rgba(255, 255, 255, .7);
                 font-size: 24px;
-                margin-right: 5px;
+                height:40px;
+                line-height:40px;
+                display:inline-block;   
+                margin-right: 6px;
                 vertical-align: middle;
                 transition: background 0.2s;
             }
             .txt {
                 color: #fff;
                 color: rgba(255, 255, 255, .7);
-                font-size: 16px;
+                font-size: 14px;
                 transition: all 0.2s;
             }
             .more {
@@ -56,7 +95,7 @@
                 -webkit-transition: all .2s;
                 position: absolute;
                 top: 50%;
-                right: 35px;
+                right: 15px;
                 margin-top: -3px;
                 border-width: 6px;
                 border-top-style: solid;
@@ -96,7 +135,7 @@
                         color: rgba(255, 255, 255, .7);
                         padding-left: 42px;
                         padding-right: 15px;
-                        font-size: 16px;
+                        font-size: 14px;
                         white-space: nowrap;
                         text-overflow: ellipsis;
                         overflow: hidden;

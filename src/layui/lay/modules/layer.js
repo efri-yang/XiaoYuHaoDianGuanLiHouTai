@@ -172,7 +172,7 @@ var layer = {
       type: 4,
       content: [content, follow],
       closeBtn: false,
-      time: 3000,
+      time: 1000000,
       shade: false,
       resize: false,
       fixed: false,

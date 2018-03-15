@@ -6,15 +6,19 @@
     <title>小鱼好店通用后台</title>
     <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
     <script type="text/javascript" src="layui/layui.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/iconfont/iconfont.css">
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <script type="text/javascript" src="js/common.js"></script>
 </head>
 
 <body>
+
     <div class="layui-layout layui-layout-admin">
         @@include("./views/common/_header.html") @@include("./views/common/_sideMenu.html")
-        <div class="com-body p15">
+        <div class="com-body p15" data-area="combody">
             @@include("./views/common/_breadcrumb.html",{"title":"通用框架"})
+            <div class="f14  clr009688 fwbold">二级标题</div>
+            <hr class="layui-bg-green">
             <div class="layui-tab">
                 <ul class="com-tab-title type-2">
                     <li class="active"><a href="#tbd-1" data-toggle="tab">表格</a></li>
@@ -196,6 +200,49 @@
                             </select>
                         </div>
                     </div>
+
+                    <!-- 选择框 -->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><span class="com-must-star">*</span>选择框</label>
+                        <div class="layui-input-inline">
+                            <select name="city" lay-verify="required">
+                                <option value=""></option>
+                                <option value="0" selected="">北京</option>
+                                <option value="1">上海</option>
+                                <option value="2">广州</option>
+                                <option value="3">深圳</option>
+                                <option value="4">杭州</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline">
+                            <select name="city" lay-verify="required">
+                                <option value=""></option>
+                                <option value="0" selected="">北京</option>
+                                <option value="1">上海</option>
+                                <option value="2">广州</option>
+                                <option value="3">深圳</option>
+                                <option value="4">杭州</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline">
+                            <select name="city" lay-verify="required">
+                                <option value=""></option>
+                                <option value="0" selected="">北京</option>
+                                <option value="1">上海</option>
+                                <option value="2">广州</option>
+                                <option value="3">深圳</option>
+                                <option value="4">杭州</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">原始复选框</label>
+                        <div class="layui-input-block">
+                          <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作" checked="">
+                          <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读">
+                          <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏" disabled="">
+                        </div>
+                      </div>
                     <!-- 复选框 -->
                     <div class="layui-form-item">
                         <label class="layui-form-label">复选框</label>
@@ -329,7 +376,7 @@
                     <table class="layui-hide" id="test"></table>
                     <div class="layui-form table-total-handler">
                         <div class="layui-inline">
-                            <input type="checkbox" lay-skin="primary" name="like[write]" title="全选">
+                            <input type="checkbox" lay-filter="tblcheckall" lay-skin="primary" title="全选">
                         </div>
                         <div class="layui-inline  w150">
                             <div class="layui-input-block ml10">
@@ -372,7 +419,19 @@
                         ],
                         page: true
                     });
+                    var form=layui.form;
+                    var $=layui.$;
+                    form.on('checkbox(tblcheckall)',function(data){
+                        var child = $(data.elem).parents('.com-table-wrap').find('input[type="checkbox"]');  
+
+                        child.each(function(index, item){  
+                           alert("xxxx")
+                          item.checked = data.elem.checked;  
+                        });  
+                        form.render('checkbox');  
+                    });
                 });
+
                 </script>
                 <!-- *************** 表格start ****************************************************************** -->
             </div>
