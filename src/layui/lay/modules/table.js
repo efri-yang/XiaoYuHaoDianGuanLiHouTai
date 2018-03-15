@@ -94,7 +94,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form'], function(exports){
               ,'{{# } }}'
             ,'" {{#if(item2.align){}}align="{{item2.align}}"{{#}}}>'
               ,'{{# if(item2.type === "checkbox"){ }}' //复选框
-                ,'<input type="checkbox" name="layTableCheckbox" lay-skin="primary" lay-filter="layTableAllChoose" {{# if(item2[d.data.checkName]){ }}checked{{# }; }}>'
+                ,'<input type="checkbox" name="layTableCheckbox" lay-skin="primary" lay-filter="{{d.checkallFilter}}" {{# if(item2[d.data.checkName]){ }}checked{{# }; }}>'
               ,'{{# } else { }}'
                 ,'<span>{{item2.title||""}}</span>'
                 ,'{{# if(!(item2.colspan > 1) && item2.sort){ }}'
@@ -127,7 +127,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form'], function(exports){
     ,'<div class="layui-table-box">'
       ,'{{# var left, right; }}'
       ,'<div class="layui-table-header">'
-        ,TPL_HEADER()
+        ,TPL_HEADER.call()
       ,'</div>'
       ,'<div class="layui-table-body layui-table-main">'
         ,TPL_BODY
@@ -237,16 +237,16 @@ layui.define(['laytpl', 'laypage', 'layer', 'form'], function(exports){
     //开始插入替代元素
     var othis = options.elem
     ,hasRender = othis.next('.' + ELEM_VIEW)
-    
     //主容器
     ,reElem = that.elem = $(laytpl(TPL_MAIN).render({
-      VIEW_CLASS: ELEM_VIEW
+      VIEW_CLASS: ELEM_VIEW,
+      checkallFilter:"layTableAllChoose-"+options.id
       ,data: options
       ,index: that.index //索引
     }));
-    
+   
     options.index = that.index;
-    
+   
     //生成替代元素
     hasRender[0] && hasRender.remove(); //如果已经渲染，则Rerender
     othis.after(reElem);
@@ -504,7 +504,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form'], function(exports){
         if(!sort){
           item1[table.config.indexName] = i1;
         }
-        
+
         that.eachCols(function(i3, item3){
           var field = item3.field || i3, content = item1[field]
           ,cell = that.getColElem(that.layHeader, field);
@@ -535,7 +535,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form'], function(exports){
               
               //渲染复选框列视图
               if(item3.type === 'checkbox'){
-                return '<input type="checkbox" name="layTableCheckbox" lay-skin="primary" '+ function(){
+                return '<input type="checkbox"  lay-filter="'+options.id+'" name="layTableCheckbox" lay-skin="primary" '+ function(){
                   var checkName = table.config.checkName;
                   //如果是全选
                   if(item3[checkName]){
@@ -975,8 +975,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form'], function(exports){
       ,childs = that.layBody.find('input[name="layTableCheckbox"]')
       ,index = checkbox.parents('tr').eq(0).data('index')
       ,checked = checkbox[0].checked
-      ,isAll = checkbox.attr('lay-filter') === 'layTableAllChoose';
-      
+      ,isAll = checkbox.attr('lay-filter') === 'layTableAllChoose-'+that.config.id;
       //全选
       if(isAll){
         childs.each(function(i, item){
